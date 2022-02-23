@@ -1,0 +1,22 @@
+[
+	{
+		"deviceId":"lamp_1",
+		"type":"philips-hue-lamp",
+		"settings" :
+		{
+			"ip":"",
+			"auth-id":"",
+			"id": ""
+		}
+	},
+	{
+		"deviceId":"lightsensor_1",
+		"type":"versasense",
+		"settings" :
+		{
+			"mac": "00-17-0D-00-00-30-E9-62",
+			"pid1":"9803",
+			"pid2": "9805"
+		}
+	}
+]

@@ -1,0 +1,33 @@
+[
+  {
+    "parameterReference": "state",
+    "parameterTypeInfo": {
+      "parameterType": "Number",
+      "unit": null,
+      "validator": {
+        "type": "Number",
+        "values": null
+      }
+    },
+    "actions": {
+      "Read": {
+        "driverType": "RestDriver",
+        "version": "v0.0",
+        "settings": {
+          "request-type": "GET",
+          "access-point": "https://gateway.versasense.com:8889/api/v1/devices/{mac}/peripherals/{pid1}/{pid2}/sample",
+          "interpreter": "return response.data.find(data => data.measurement === 'Light').value"
+        }
+      },
+      "Monitor": {
+        "driverType": "MQTTDriver",
+        "version": "v0.0",
+        "settings": {
+          "access-point": "tcp://gateway.versasense.com:1883",
+          "topic": "vs/{mac}/sensor-data",
+          "interpreter": " if(response.identifier == '{pid1}/{pid2}') return response.data.find(data => data.measurement === 'Light').value"
+        }
+      }
+    }
+  }
+]
